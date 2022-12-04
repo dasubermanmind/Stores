@@ -10,7 +10,6 @@
 1. Once the container has been built we then run it via `docker run -dp 5000:5000 rest-store-api`
 
 
-
 Now you can test each individual endpoints independantly.
 
 ## Todo's
@@ -23,3 +22,4 @@ Now you can test each individual endpoints independantly.
 1. Integrate with Docker [X]
 1. Integrate with Celery []
 1. Maybe add the SIMPLETL as part of the process?? [] 
+1. Add pytest [] 
