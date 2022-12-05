@@ -30,10 +30,10 @@ def create_store():
     return store
 
 
-@app.get("/store/<string:id>")
-def get_store(id):
+@app.get("/store/<string:store_id>")
+def get_store(store_id):
     try:
-        return stores[id]
+        return stores[store_id]
     except KeyError as e:
         abort(404, message="Store not found")
         
