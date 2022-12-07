@@ -1,6 +1,6 @@
 import uuid
 from flask import Flask, request
-from db.db import stores, items
+# from db import stores, items
 from flask_smorest import abort, Api
 
 from resources.store import blp as StoreBlueprint
@@ -20,6 +20,11 @@ api = Api(app)
 
 # api.register_blueprint(ItemBlueprint)
 api.register_blueprint(StoreBlueprint)
+
+
+# TODO: This is temp
+stores ={}
+items = {}
 
 # app decorator registers the endpoint with the HTTP verb at the specific endpoint
 @app.get("/store")
