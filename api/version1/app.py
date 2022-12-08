@@ -2,11 +2,23 @@ import uuid
 from flask import Flask, request
 # from db import stores, items
 from flask_smorest import abort, Api
+from api.settings.settings import MYSQL_DATABASE_DB, MYSQL_DATABASE_HOST, MYSQL_DATABASE_PASSWORD, MYSQL_DATABASE_USER
+
+from flaskext.mysql import MySQL
 
 from resources.store import blp as StoreBlueprint
 
 app = Flask(__name__)
 
+mysql = MySQL()
+
+# MySQL configurations
+app.config['MYSQL_DATABASE_USER'] = MYSQL_DATABASE_USER
+app.config['MYSQL_DATABASE_PASSWORD'] = MYSQL_DATABASE_PASSWORD
+app.config['MYSQL_DATABASE_DB'] = MYSQL_DATABASE_DB
+app.config['MYSQL_DATABASE_HOST'] = MYSQL_DATABASE_HOST
+
+mysql.init_app(app)
 
 app.config["PROPAGATE_EXCEPTIONS"] = True
 app.config["API_TITLE"] = "Stores REST API"
