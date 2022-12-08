@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mysql_db:
+    image: mysql:5.7
+
+    env_file:
+      - .flaskenv
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - stores
+
+networks:
+  stores:
+    driver: bridge
+
+stores_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql_db
+    networks:
+      - stores
+    command:
+      tail -f /dev/null
